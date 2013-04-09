@@ -1,6 +1,7 @@
 function tokenizer (input) {
-  var output = [];
-  var buffer = '';
+  var output = []
+  var buffer = ''
+  var steps = []
 
   function clear_buffer () {
     if (buffer != '') {
@@ -10,8 +11,11 @@ function tokenizer (input) {
   }
 
   for (var i = 0; i < input.length; i++) {
-    // NOTE: in the future we'll need to log each step of tokenizing, parsing, etc. somehow for visualization purposes.
-    // This is where some of that will go!  Probably best to add it here first before even building a parser and whatnot.
+    // this is a start.  would probably be better to both accumulate the steps, and have a callback.
+    steps.push({
+      'output' : output.slice(0),
+      'buffer' : buffer,
+    })
     switch(input[i]) {
       case '(':
         output.push('(')
@@ -35,7 +39,8 @@ function tokenizer (input) {
         buffer = buffer.concat(input[i])
     }
   }
-  return output;
+  console.log(steps)
+  return output
 }
 
 console.log(tokenizer('(foo bar baz "quux gaarply")'))
