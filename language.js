@@ -2,34 +2,34 @@ function tokenizer (input) {
   var output = [];
   var buffer = '';
 
-// FIXME: I don't like this pattern, but it is late and I am not sure how to do less ugly in JS right now.
-  function clearBuffer (buffer) {
+  function clearBuffer () {
     if (buffer != '') {
       output.push(buffer)
       buffer = ''
     }
-    return buffer
   }
 
   for (var i = 0; i < input.length; i++) {
+    // NOTE: in the future we'll need to log each step of tokenizing, parsing, etc. somehow for visualization purposes.
+    // This is where some of that will go!  Probably best to add it here first before even building a parser and whatnot.
     switch(input[i]) {
       case '(':
         output.push('(')
         break
       case ')':
-        buffer = clearBuffer(buffer)
+        clearBuffer(buffer)
         output.push(')')
         break
       case '\'':
-        buffer = clearBuffer(buffer)
+        clearBuffer(buffer)
         output.push('\'')
         break
       case '"':
-        buffer = clearBuffer(buffer)
+        clearBuffer(buffer)
         output.push('"')
         break
       case ' ':
-        buffer = clearBuffer(buffer)
+        clearBuffer(buffer)
         break
       default:
         buffer = buffer.concat(input[i])
