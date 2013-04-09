@@ -2,7 +2,7 @@ function tokenizer (input) {
   var output = [];
   var buffer = '';
 
-  function clearBuffer () {
+  function clear_buffer () {
     if (buffer != '') {
       output.push(buffer)
       buffer = ''
@@ -17,19 +17,19 @@ function tokenizer (input) {
         output.push('(')
         break
       case ')':
-        clearBuffer(buffer)
+        clear_buffer(buffer)
         output.push(')')
         break
       case '\'':
-        clearBuffer(buffer)
+        clear_buffer(buffer)
         output.push('\'')
         break
       case '"':
-        clearBuffer(buffer)
+        clear_buffer(buffer)
         output.push('"')
         break
       case ' ':
-        clearBuffer(buffer)
+        clear_buffer(buffer)
         break
       default:
         buffer = buffer.concat(input[i])
