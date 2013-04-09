@@ -2,6 +2,7 @@ function tokenizer (input) {
   var output = [];
   var buffer = '';
 
+// FIXME: I don't like this pattern, but it is late and I am not sure how to do less ugly in JS right now.
   function clearBuffer (buffer) {
     if (buffer != '') {
       output.push(buffer)
