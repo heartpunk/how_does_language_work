@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src='./language.js' ></script>
+    <style>
+      .body {position: relative;}
+      .some_of.da_screen { height: 10%; }
+      .most_of.da_screen { height: 90%; }
+      .da_screen textarea {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='some_of da_screen'>
+      <textarea id='input'>(foo bar baz "quux gaarply")</textarea>
+    </div>
+    <div class='most_of da_screen'>
+      <textarea id='output'></textarea>
+    </div>
+    <script>
+      function watch_form () {
+        var input = $($('#input')[0]);
+        var output = $($('#output')[0]);
+        if (input.val() != input.attr('data')) {
+          var body_was = input.val();
+          input.attr('data', input.val());
+          output.val(JSON.stringify(tokenizer(body_was), undefined, 2));
+        }
+      }
+      setInterval(watch_form, 50)
+    </script>
+  </body>
+</html>

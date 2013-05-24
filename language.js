@@ -43,8 +43,7 @@ function tokenizer (input) {
         buffer = buffer.concat(input[i])
     }
   }
-  console.log(steps)
-  return output
+  return steps
 }
 
 console.log(tokenizer('(foo bar baz "quux gaarply")'))
